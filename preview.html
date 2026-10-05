@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wirtschaftsmathematik Live — Textbook to Live Markets</title>
+<meta name="description" content="Turn Opitz Wirtschaftsmathematik Ch.27-30 into running code and verify on 2026 live markets. Docker-reproducible, MIT-licensed.">
+<style>
+:root{--bg:#0b1020;--card:#141b33;--ink:#eef2ff;--muted:#a5b4fc;--accent:#22d3ee;--gold:#fbbf24;--green:#34d399}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(1200px 600px at 20% -10%,#1e2a5a 0%,var(--bg) 55%),var(--bg);color:var(--ink);line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:32px 20px 80px}
+.hero{background:linear-gradient(135deg,#1e1b4b,#0e7490);border:1px solid #ffffff22;border-radius:20px;padding:36px 32px;box-shadow:0 20px 60px #0008}
+.badges img,.badges span{display:inline-block;background:#ffffff14;border:1px solid #ffffff2a;border-radius:999px;padding:4px 12px;margin:4px 6px 0 0;font-size:13px}
+h1{font-size:clamp(28px,4vw,46px);margin:12px 0}h2{margin-top:48px;border-left:4px solid var(--accent);padding-left:12px}p.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid #ffffff1a;border-radius:16px;padding:18px}
+.card h3{margin:0 0 8px}.btn{display:inline-block;background:var(--accent);color:#04202a;font-weight:700;border-radius:12px;padding:12px 18px;text-decoration:none;margin:8px 8px 0 0}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid #ffffff44}
+table{width:100%;border-collapse:collapse;background:#ffffff08;border-radius:12px;overflow:hidden}th,td{padding:10px 12px;border-bottom:1px solid #ffffff14;text-align:left}th{background:#ffffff10}
+img.chart{width:100%;border-radius:14px;border:1px solid #ffffff22;background:#fff}
+video{width:100%;border-radius:14px;border:1px solid #ffffff22;background:#000}
+code,pre{background:#00000055;border:1px solid #ffffff22;border-radius:8px}pre{padding:14px;overflow:auto}
+.toc a{color:var(--muted);text-decoration:none}.toc a:hover{color:#fff}
+.kpi{font-size:28px;font-weight:800;color:var(--gold)}
+footer{margin-top:60px;color:var(--muted);font-size:14px}
+@media(max-width:640px){.hero{padding:24px 18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hero">
+<div class="badges"><span>✔ 9 tests passing</span><span>MIT</span><span>Python 3.12</span><span>Snapshot 2026-10-05</span><span>Docker ready</span></div>
+<h1>Wirtschafts&shy;mathematik Live</h1>
+<p><b>From textbook formulas to live markets in 60 seconds.</b> The standard German economics-math textbook (Ch.27–30: interest, annuities, loans, bonds, optimization) as tested Python — checked on Apple, Bitcoin and Euro/Dollar/Yen from October 2026.</p>
+<p class="muted"><b>CEO summary:</b> Every key textbook number reproduces exactly (€20,000 → €35,816.95; annuity €9,238.99; bond 103.63). The same code is stressed at 4% vs 6% and on live data. One Docker command reproduces everything. Six publishable findings included. MIT-licensed for class and boardroom.</p>
+<a class="btn" href="#quickstart">Try it in 60 seconds</a>
+<a class="btn ghost" href="#video">▶ Watch the demo</a>
+<a class="btn ghost" href="#beginner">🌱 Beginner guide</a>
+</div>
+
+<h2>What you get (numbers, not promises)</h2>
+<div class="grid">
+<div class="card"><div class="kpi">32,000 / 35,816.95</div><p>€20k, 10y, 6% — simple vs compound. The first line every student must feel.</p></div>
+<div class="card"><div class="kpi">5,525.63</div><p>5 × €1,000 at 5% annuity end value. Bar value, pre/post variations included.</p></div>
+<div class="card"><div class="kpi">9,238.99</div><p>€40k loan, 5y, 5% yearly payment. Rest-debt and split verified.</p></div>
+<div class="card"><div class="kpi">103.63 → 96.53</div><p>Bond price at 4% vs 6%. Duration 3.729y → 3.718y. Higher yield = shorter wait.</p></div>
+<div class="card"><div class="kpi">32 · gap 0</div><p>Production LP (3,4)=32 with zero duality gap. Transport 106 → 100 optimum.</p></div>
+<div class="card"><div class="kpi">13 · gap 4.88%</div><p>Integer optimum (2,3)=13 beats naive rounding 12. Rounding is not optimization.</p></div>
+</div>
+
+<h2 id="video">🎬 Video demo (plays here — GitHub Pages embeds what READMEs cannot)</h2>
+<p class="muted">READMEs play GIFs inline but block video players. This page plays full video. The GIF below is the same animation as the MP4.</p>
+<img src="docs/demo.gif" alt="Demo animation" style="width:100%;border-radius:14px;border:1px solid #ffffff22">
+<video controls preload="metadata" src="docs/demo.mp4"></video>
+
+<h2>Screenshots & charts (generated, never hand-drawn)</h2>
+<div class="grid">
+<div class="card"><h3>Compounding → continuous limit</h3><img class="chart" src="docs/chart_compounding.png" alt="compounding"></div>
+<div class="card"><h3>Higher coupon = shorter duration</h3><img class="chart" src="docs/chart_duration.png" alt="duration"></div>
+<div class="card"><h3>Live Bitcoin window</h3><img class="chart" src="docs/chart_btc.png" alt="btc"></div>
+<div class="card"><h3>Rounding fails</h3><img class="chart" src="docs/chart_gap.png" alt="gap"></div>
+</div>
+
+<h2 id="beginner">🌱 Beginner guide — zero to professional</h2>
+<div class="card"><h3>Step 0 — 3 ideas (2 min)</h3><p><b>Interest:</b> simple <code>K0·(1+n·i)</code> vs compound <code>K0·(1+i)ⁿ</code> → continuous <code>K0·e^{i·n}</code>.<br><b>Present value:</b> future €1,000 = <code>1000/(1+i)⁵</code> today; duration = average arrival time.<br><b>Optimization:</b> linear = Simplex/duality; integer = Branch-and-Bound (rounding fails).</p></div>
+<div class="card"><h3>Step 1 — Run (1 min)</h3><pre>pip install -r requirements.txt
+python -m pytest tests -q
+PYTHONPATH=. python experiments/exp01_zins_verification.py</pre></div>
+<div class="card"><h3>Step 2 — Change one number (2 min)</h3><pre>from src.finanzmathematik import zinseszins_endwert, annuitaet
+print(zinseszins_endwert(20000, 0.06, 10))  # try 0.04
+print(annuitaet(40000, 0.05, 5))</pre></div>
+
+<h2 id="quickstart">⚡ Quick start</h2>
+<pre>git clone &lt;your-fork-url&gt; opitz-live &amp;&amp; cd opitz-live
+pip install -r requirements.txt
+python -m pytest tests -q
+PYTHONPATH=. python experiments/run_all.py
+docker compose build &amp;&amp; docker compose up research</pre>
+
+<h2>Live data (fixed snapshot, refreshable)</h2>
+<table><tr><th>Asset</th><th>Snapshot value</th><th>Use</th></tr>
+<tr><td>Apple AAPL</td><td>333.69</td><td>Equity anchor</td></tr>
+<tr><td>Bitcoin 30d</td><td>79,781 → 86,078 (+7.89%, MDD 5.53%)</td><td>Drawdown lab</td></tr>
+<tr><td>ECB FX per USD</td><td>EUR 0.89087 · GBP 0.75753 · JPY 157.67</td><td>€6 → $6.736 conversion</td></tr>
+<tr><td>Backdrop Sep-2026</td><td>Rates up US/EU</td><td>4% vs 6% stress</td></tr></table>
+
+<h2>Experiments</h2>
+<table><tr><th>Exp</th><th>Question</th><th>Output</th></tr>
+<tr><td>EXP01</td><td>Interest + FX + BTC hold?</td><td>benchmarks/exp01_results.csv (14 rows)</td></tr>
+<tr><td>EXP02</td><td>Annuity/loan/bond at 4% vs 6%?</td><td>benchmarks/exp02_results.csv (17 rows)</td></tr>
+<tr><td>EXP03</td><td>LP/transport/KKT/B&amp;B?</td><td>benchmarks/exp03_results.csv</td></tr>
+<tr><td>EXP04</td><td>Six hidden patterns?</td><td>benchmarks/exp04_results.csv</td></tr></table>
+
+<h2 class="toc">Deploy this page on GitHub Pages (3 clicks, 2026 flow)</h2>
+<div class="card"><p>1) Push this repo to GitHub (keep <code>preview.html</code> at root).<br>2) <b>Settings → Pages → Build and deployment → Source: Deploy from a branch</b> → Branch <code>main</code>, Folder <code>/ (root)</code> → Save.<br>3) Open <code>https://&lt;you&gt;.github.io/&lt;repo&gt;/preview.html</code>. Alternative: move page + <code>docs/</code> to <code>/docs</code> and set Folder to <code>/docs</code> — relative paths keep working.</p></div>
+
+<h2>Project structure & license</h2>
+<p class="muted">src/ (textbook code) · experiments/ · tests/ (9 tests) · benchmarks/ (CSVs) · data/snapshots/ · docs/ (charts+video) · papers/OUTLINE.md · Dockerfile + docker-compose.yml + Makefile. MIT — see LICENSE.</p>
+<footer>Built for learners, teachers, analysts and PhD candidates. If a number is not in <code>tests/</code> or <code>benchmarks/</code>, treat it as conjecture.</footer>
+</div>
+</body>
+</html>

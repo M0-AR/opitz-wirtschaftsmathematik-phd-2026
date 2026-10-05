@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: "From Textbook to Live Market: Verifying Opitz Wirtschaftsmathematik (Ch.27-30) on 2026 Live Data"
+version: 0.1.0
+date-released: 2026-10-05
+authors:
+  - family-names: "Research Lab"
+    given-names: "Open"
+license: MIT
+repository-code: "https://example.org/opitz-wirtschaftsmathematik-phd-2026"
+keywords: [Wirtschaftsmathematik, Finanzmathematik, Optimierung, Reproducibility, Benchmark]

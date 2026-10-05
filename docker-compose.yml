@@ -1,0 +1,40 @@
+services:
+  research:
+    build: .
+    image: opitz-wirtschaftsmathematik-phd-2026:0.1.0
+    container_name: opitz-research
+    volumes:
+      - ./benchmarks:/app/benchmarks
+      - ./data:/app/data:ro
+    environment:
+      - PYTHONPATH=/app
+      - TZ=UTC
+      - MPLBACKEND=Agg
+    command: ["python3", "-m", "pytest", "-q"]
+    mem_limit: 4g
+    cpus: 2.0
+
+  lab:
+    build: .
+    image: opitz-wirtschaftsmathematik-phd-2026:0.1.0
+    container_name: opitz-lab
+    volumes:
+      - ./benchmarks:/app/benchmarks
+      - ./data:/app/data:ro
+    environment:
+      - PYTHONPATH=/app
+      - TZ=UTC
+      - MPLBACKEND=Agg
+    command: ["bash", "-c", "python3 experiments/exp01_zins_verification.py && python3 experiments/exp02_renten_tilgung.py && python3 experiments/exp03_optimierung_benchmark.py && python3 experiments/exp04_hidden_patterns.py && echo ALL_EXPERIMENTS_DONE"]
+    profiles: ["lab"]
+
+  verify:
+    build: .
+    image: opitz-wirtschaftsmathematik-phd-2026:0.1.0
+    container_name: opitz-verify
+    volumes:
+      - ./benchmarks:/app/benchmarks
+    environment:
+      - PYTHONPATH=/app
+    command: ["bash", "-c", "python3 -m pytest -q && python3 experiments/run_all.py"]
+    profiles: ["verify"]

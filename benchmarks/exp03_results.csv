@@ -1,0 +1,14 @@
+metric,computed,reference
+LP_primal_x1,3.0,3.0
+LP_primal_x2,4.0,4.0
+LP_primal_obj,32.0,32.0
+LP_duality_gap,0.0,0.0
+TP_NW_cost,106.0,106.0
+TP_OPT_cost,100.0,100.0
+TP_MODI_minQ,-6.0,-6.0
+KKT_x1,3.9999999999999996,4.0
+KKT_x2,1.999999998853748,2.0
+BB_x1,2.0,2.0
+BB_x2,3.0,3.0
+BB_obj,13.0,13.0
+BB_nodes,5.0,5.0
