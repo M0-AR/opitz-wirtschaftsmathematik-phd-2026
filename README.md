@@ -8,7 +8,7 @@
 
 ![Demo — discrete compounding converging to the continuous limit](docs/demo.gif)
 
-**[🌐 Open the beautiful web preview → `preview.html`](preview.html)** · **[▶ Watch the full video on GitHub Pages (see §12)](#12--web-preview--video--github-pages)** · **[🌱 New here? Start at the Beginner Guide](#-beginner-guide--read-this-and-you-are-a-professional)**
+**[🌐 Open the beautiful web preview → `preview.html`](https://m0-ar.github.io/opitz-wirtschaftsmathematik-phd-2026/preview.html)** · **[▶ Watch the full video on GitHub Pages (see §12)](#12--web-preview--video--github-pages)** · **[🌱 New here? Start at the Beginner Guide](#-beginner-guide--read-this-and-you-are-a-professional)**
 
 Let's work this out in a step-by-step way to be sure we have the right answer — every claim below is backed by a file you can open and a command you can re-run.
 
